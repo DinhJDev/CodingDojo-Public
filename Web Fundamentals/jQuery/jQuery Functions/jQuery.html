@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang=en>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+        <style>
+            .red {
+                color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="section">
+            <button id="addClass">Add Class</button>
+            <div>
+                <h1>AddClass</h1>
+                <p id="turnRed">Click the button to add class 'red' to this paragraph</p>
+            </div>
+            <script>
+                $("#addClass").click(function(){
+                    $("#turnRed").addClass("red");
+                });
+            </script>
+        </div>
+        <div class="section">
+            <button id="slideToggle">Slidetoggle</button>
+            <div>
+                <h1>Slidetoggle</h1>
+                <p>Click the button to slidetoggle a hidden image</p>
+                <img id="hiddenImg" src="images\image0.jpg" width=500px>
+            </div>
+            <script>
+                $("#slideToggle").click(function(){
+                    $("#hiddenImg").slideToggle();
+                });
+            </script>
+        </div>
+        <div class="section">
+            <button id="append">Append</button>
+            <div>
+                <h1>Append</h1>
+                <p id="appendP">Click the button to append a new paragraph</p>
+            </div>
+            <script>
+                $("#append").click(function(){
+                    $("#appendP").append("<p>A paragraph has been appended!<p>");
+                });
+                $("#appendP").click(function(){
+                    $("#appendP").hide();
+                });
+            </script>
+        </div>
+        <div class="section">
+            <button id="hide">Hide</button>
+            <div>
+                <h1>Hide</h1>
+                <p id="hideP">Click to hide the paragraph</p>
+            </div>
+            <script>
+                $("#hide").click(function(){
+                    $("#hideP").hide();
+                });
+            </script>
+        </div>
+        <div class="section">
+            <button id="show">Show</button>
+            <div>
+                <h1>Show</h1>
+                <p id="showP">This paragraph is visbile because you clicked the Show button!</p>
+            </div>
+            <script>
+                $("#showP").hide();
+                $("#show").click(function(){
+                    $("#showP").show();
+                });
+            </script>
+        </div>
+        <div class="section">
+            <button id="toggle">Toggle</button>
+            <div>
+                <h1>Toggle</h1>
+                <p id="toggleP">Click to toggle the paragraph</p>
+            </div>
+            <script>
+                $("#toggle").click(function(){
+                    $("#toggleP").toggle();
+                });
+            </script>
+            <div class="section">
+                <button id="slideDown">SlideDown</button>
+                <div>
+                    <h1>SlideDown</h1>
+                    <p>Click the button to slidetoggle a hidden image</p>
+                    <img id="hiddenImg2" src="images\image0.jpg" width=500px>
+                </div>
+                <script>
+                    $('#hiddenImg2').slideUp();
+                    $("#slideDown").click(function(){
+                        $("#hiddenImg2").slideDown();
+                    });
+                </script>
+            </div>
+        </div>
+        <div class="section">
+            <button id="slideUp">SlideUp</button>
+            <div>
+                <h1>SlideUp</h1>
+                <p>Click the button to slidetoggle a hidden image</p>
+                <img id="hiddenImg3" src="images\image0.jpg" width=500px>
+            </div>
+            <script>
+                $("#slideUp").click(function(){
+                    $("#hiddenImg3").slideUp();
+                });
+            </script>
+        </div>
+        <div class="section">
+            <button id="fadeIn">FadeIn</button>
+            <div>
+                <h1>FadeIn</h1>
+                <p>Click the button to FadeIn a hidden image</p>
+                <img id="hiddenImg4" src="images\image0.jpg" width=500px>
+            </div>
+            <script>
+                $("#hiddenImg4").fadeOut();
+                $("#fadeIn").click(function(){
+                    $("#hiddenImg4").fadeIn();
+                });
+            </script>
+        </div>
+        <div class="section">
+            <button id="fadeOut">FadeOut</button>
+            <div>
+                <h1>FadeOut</h1>
+                <p>Click the button to FadeOut a hidden image</p>
+                <img id="hiddenImg5" src="images\image0.jpg" width=500px>
+            </div>
+            <script>
+                $("#hiddenImg4").fadeIn();
+                $("#fadeOut").click(function(){
+                    $("#hiddenImg5").fadeOut();
+                });
+            </script>
+        </div>
+        <div class="section">
+            <button id="before">Before</button>
+            <div>
+                <h1>Before</h1>
+                <p id="beforeP">Click the button to add a paragraph before.</p>
+            </div>
+            <script>
+                $("#before").click(function(){
+                    $("#beforeP").before("<p>This paragraph has been added!<p>");
+                });
+            </script>
+        </div>
+        <div class="section">
+            <button id="after">After</button>
+            <div>
+                <h1>After</h1>
+                <p id="afterP">Click the button to add a paragraph after.</p>
+            </div>
+            <script>
+                $("#after").click(function(){
+                    $("#afterP").after("<p>This paragraph has been added!<p>");
+                });
+            </script>
+        </div>
+        <div class="section">
+            <button id="html">HTML/Text</button>
+            <h1>HTML & Text</h1>
+            <p id="htmlP">Click the button to reveal the html code for this paragraph!</p>
+            <p id="dupP">This will change.</p>
+            <script>
+                $("#html").click(function() {
+                    var htmlString = "<p>" + $("#htmlP").html() + "</p>";
+                    console.log(htmlString);
+                    $("#dupP").text(htmlString);
+                })
+            </script>
+        </div>
+        <div class="section">
+            <h1>Val</h1>
+            <p>Click to change the value of the input below</p>
+            <button class="buttonVal">One</button>
+            <button class="buttonVal">Two</button>
+            <button class="buttonVal">Three</button>
+            <input type="text" value="Click a Button">
+
+            <script>
+                $( ".buttonVal" ).click(function() {
+                    var text = $( this ).text();
+                    $( "input" ).val( text );
+                });
+            </script>
+        </div>
+        <div class="section">
+            <h1>Attr</h1>
+            <p>View the attr of the checkbox by clicking on it.</p>
+            <input id="check1" type="checkbox" checked="checked">
+            <label for="check1">Check me</label>
+            <p id="theAttr"></p>
+            <script>
+                $("#check1").change(function(){
+                    var $input = $(this);
+                    $( "#theAttr" ).html( ".attr( 'checked' ): <b>" + $input.attr( "checked" ) + "</b><br>" +
+                    ".prop( 'checked' ): <b>" + $input.prop( "checked" ) + "</b><br>" +
+                    ".is( ':checked' ): <b>" + $input.is( ":checked" ) + "</b>" );
+                    });
+            </script>
+        </div>
+    </div>
+    </body>
+</html>
