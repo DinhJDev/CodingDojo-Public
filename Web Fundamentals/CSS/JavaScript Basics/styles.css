@@ -23,6 +23,15 @@ h1 {
     font-weight: bolder;
 }
 
+h2 {
+    /* position: fixed;
+    margin-left: 15px;
+    top: 10px;
+    font-size: 30px;
+    font-weight: bolder; */
+    color: #bfd7ea;
+}
+
 .nav {
     display: inline-block;
     position:fixed;
@@ -34,10 +43,39 @@ h1 {
     top: 95px;
 }
 
+h2 {
+    position: relative;
+    left: 20px;
+}
+
+.first {
+    font-size: 12px;
+    margin: 10px;
+    position: relative;
+    left: 10px;
+}
+
+a {
+    color: #52dee5;
+    text-decoration: underline;
+}
+
+.main ul {
+    text-decoration: none;
+    font-size: 12px;
+    margin: 10px;
+    position: relative;
+    left: -15px;
+}
+
+.blue {
+    color: #7692ff;
+}
+
 .nav p, ul {
     color: #52dee5;
     text-decoration: underline;
-    font-size: 14px;
+    font-size: 12px;
 }
 
 .nav p {
@@ -67,4 +105,20 @@ h1 {
 
 p {
     color: #bfd7ea;
+}
+
+.footer {
+    display: inline-block;
+    background-color: #5c6672;
+    margin: 10px;
+    height: 50px;
+    border-radius: 15px;
+    width: 950px;
+}
+
+.footer p {
+    font-size: 12px;
+    position: relative;
+    top: 5px;
+    left: 15px;
 }
