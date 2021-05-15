@@ -26,9 +26,155 @@
 }
 
 #selfport {
-    width: 400px;
+    height: 300px;
     border: 5px solid lightgray;
     position: relative;
-    left: 20px;
+    left: 15px;
     top: 20px;
+}
+
+#about .title {
+    width: 575px;
+}
+
+#about .block {
+    top: 0px;
+    width: 555px;
+    height: 240px;
+}
+
+.block {
+    background-color: #e9e0e9;
+    width: 330px;
+    font-size: 16px;
+    font-family: sans-serif;
+    padding: 10px;
+    height: 180px;
+    color: black;
+    position: relative;
+    top: -4px;
+}
+
+a {
+    text-decoration: underline;
+}
+
+#about {
+    position: relative;
+    display: inline-block;
+    left: 25px;
+    bottom: 38px;
+}
+
+.title {
+    background: #b4b4b7;
+    background: -moz-linear-gradient(top, #b4b4b7 0%, #898795 50%, #B4B4B7 100%);
+    background: -webkit-linear-gradient(top, #b4b4b7 0%, #898795 50%, #B4B4B7 100%);
+    background: linear-gradient(to bottom, #b4b4b7 0%, #898795 50%, #B4B4B7 100%);
+    width:350px;
+    font-family: sans-serif;
+    color: white;
+    font-size: 10px;
+    height: 50px;
+    position: relative;
+}
+
+.title h1 {
+    position: relative;
+    left: 10px;
+    top: 12px;
+}
+
+#lamode {
+    position: relative;
+    display: inline-block;
+    left: 15px;
+    bottom: 38px;
+}
+
+#lamode img {
+    position: relative;
+}
+
+.tech {
+    background: #b4b4b7;
+    background: -moz-linear-gradient(top, #b4b4b7 0%, #898795 50%, #B4B4B7 100%);
+    background: -webkit-linear-gradient(top, #b4b4b7 0%, #898795 50%, #B4B4B7 100%);
+    background: linear-gradient(to bottom, #b4b4b7 0%, #898795 50%, #B4B4B7 100%);
+    width:350px;
+    font-family: sans-serif;
+    color: white;
+    font-size: 10px;
+    height: 45px;
+    position: relative;
+    top: -17px;
+}
+.tech h1 {
+    position: relative;
+    font-size: 16px;
+    top: 14px;
+    left: 8px;
+}
+
+.tech-block {
+    background-color: #e9e0e9;
+    width: 330px;
+    font-size: 16px;
+    font-family: sans-serif;
+    padding: 10px;
+    height: 180px;
+    color: black;
+    position: relative;
+    top: -17px;
+}
+
+.tech-block img {
+    width: 50px;
+    margin: 5px;
+}
+
+.tech-block button {
+    border-radius: 12px;
+    padding: 8px 12px;
+    background-color: #407d61;
+    color: white;
+    box-shadow: 5px 5px 5px grey;
+    margin: auto;
+    position: relative;
+    top: 30px;
+    right: 74px;
+}
+
+#contacts {
+    display: inline-block;
+    position: relative;
+    left: 15px;
+    bottom: 39px;
+}
+#fiveEleven {
+    display: inline-block;
+    position: relative;
+    left: 15px;
+    bottom: 12px;
+}
+
+#fiveEleven button {
+    position: relative;
+    left: 120px;
+    top: 5px;
+}
+
+.footer {
+    text-align: center;
+    width:  1080px;
+    font-family: sans-serif;
+}
+
+.footer img {
+    width: 20px;
+}
+
+.footer a {
+    text-decoration: underline;
+    font-style: italic;
 }
