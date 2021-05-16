@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" type="text/css" href="styles.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $("img").click(function() {
+                    if ($(this).attr("src") == $(this).attr("data-alt-src")) {
+                        console.log("Image is Ninja")
+                        $(this).attr("src", $(this).attr("origin-src"))
+                    } else {
+                        console.log("Image is Cat")
+                        $(this).attr("src", $(this).attr("data-alt-src"))
+                    }
+                })
+            })
+        </script>
+    </head>
+    <body>
+        <div class="column">
+            <img src="images/cat0.png" data-alt-src="images/ninja0.png" origin-src="images/cat0.png">
+            <img src="images/cat1.png" data-alt-src="images/ninja1.png" origin-src="images/cat1.png">
+            <img src="images/cat2.png" data-alt-src="images/ninja2.png" origin-src="images/cat2.png">
+            <img src="images/cat3.png" data-alt-src="images/ninja3.png" origin-src="images/cat3.png">
+            <img src="images/cat4.png" data-alt-src="images/ninja4.png" origin-src="images/cat4.png">
+        </div>
+    </body>
+</html>
