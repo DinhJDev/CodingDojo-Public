@@ -64,4 +64,56 @@ public class PuzzleJava {
 
         System.out.println(numbers);
     }
+
+    public void randomSorted() {
+        ArrayList<Integer> numbers = new ArrayList<Integer>();
+
+        Random ran = new Random();
+
+        for (int i = 0; i < 10; i++){
+            numbers.add(ran.nextInt(100 - 55 + 1) + 55);
+        }
+
+        Collections.sort(numbers);
+
+        System.out.println(numbers);
+        System.out.println("Lowest number: " + numbers.get(0));
+        System.out.println("Highest number: " + numbers.get(numbers.size()-1));
+    }
+
+    public void randString() {
+        String[] alphabet = "abcdefghijklmnopqrstuvwxyz".split("");
+        List<String> alphaList = Arrays.asList(alphabet);
+        ArrayList<String> randWord = new ArrayList<>();
+
+        Random ran = new Random();
+        
+        for (int i = 0; i < 5; i++) {
+            randWord.add(alphaList.get(ran.nextInt(27)));
+        }
+
+        String arrRandWord[] = randWord.toArray(new String[randWord.size()]);
+
+        String result = Arrays.toString(arrRandWord).replace(",", "").replace("[", "").replace("]", "").replace(" ", "").trim();
+
+        System.out.println(result);
+    }
+
+    public void randStringArr() {
+        String[] alphabet = "abcdefghijklmnopqrstuvwxyz".split("");
+        List<String> alphaList = Arrays.asList(alphabet);
+        String[] resultArr = new String[10];
+        String randWord = "";
+
+        Random ran = new Random();
+        
+        for (int i = 0; i < 10; i++){
+            randWord = "";
+            for (int j = 0; j < 5; j++) {
+                randWord += alphabet[ran.nextInt(25)];
+            }
+            resultArr[i] = randWord;
+        }
+        System.out.println(Arrays.toString(resultArr));
+    }
 }

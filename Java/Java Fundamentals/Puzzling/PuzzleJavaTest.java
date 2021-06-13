@@ -6,5 +6,8 @@ public class PuzzleJavaTest {
         puzzle.shuffleNames();
         puzzle.shuffleAlpha();
         puzzle.random10();
+        puzzle.randomSorted();
+        puzzle.randString();
+        puzzle.randStringArr();
     }
 }
