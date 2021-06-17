@@ -1,5 +1,5 @@
 public class Human {
-    private int strength = 3;
+    int strength = 3;
     int stealth = 3;
     int intelligence = 3;
 
