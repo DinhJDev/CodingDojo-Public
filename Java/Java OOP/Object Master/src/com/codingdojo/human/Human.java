@@ -1,0 +1,12 @@
+public class Human {
+    private int strength = 3;
+    int stealth = 3;
+    int intelligence = 3;
+
+    int health = 100;
+
+    public void attack(Human h) {
+        h.health -= this.strength;
+        System.out.println("Attacking with " + this.strength + ".");
+    }
+}
