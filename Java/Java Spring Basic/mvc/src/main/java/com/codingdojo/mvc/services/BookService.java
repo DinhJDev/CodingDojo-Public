@@ -13,9 +13,11 @@ import com.codingdojo.mvc.repositories.BookRepository;
 public class BookService {
  // adding the book repository as a dependency
 private final BookRepository bookRepository;
+private final Book book;
  
  public BookService(BookRepository bookRepository) {
      this.bookRepository = bookRepository;
+     this.book = new Book();
  }
  
  private List<Book> books = new ArrayList<Book>(Arrays.asList(
@@ -42,5 +44,27 @@ private final BookRepository bookRepository;
          return null;
      }
  }
+ public void updateBook(int id, Book book) {
+     if (id < books.size()){
+         books.set(id, book);
+     }
+ }
+ public void destroyBook(int id) {
+     if (id < books.size()){
+         books.remove(id);
+     }
+ }
+	public Book updateBook(Long id, String title, String desc, String lang, Integer numOfPages) {
+		if (id < books.size()){
+	        book.setId(id);
+	        book.setTitle(title);
+	        book.setDescription(desc);
+	        book.setLanguage(lang);
+	        book.setNumberOfPages(numOfPages);
+		}
+		return bookRepository.save(book);
+	}
+	public void deleteBook(Long id) {
+		bookRepository.deleteById(id);
+	}
 }
-
