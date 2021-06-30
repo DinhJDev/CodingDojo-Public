@@ -67,4 +67,7 @@ private final Book book;
 	public void deleteBook(Long id) {
 		bookRepository.deleteById(id);
 	}
+	public void addBook(Book book) {
+        books.add(book);
+	}
 }

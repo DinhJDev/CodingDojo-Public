@@ -74,6 +74,16 @@ public class BooksController {
       bookService.destroyBook(id);
       return "redirect:/books";
   }
+  @PostMapping("/books/new")
+  public String createBook(@Valid @ModelAttribute("book") Book book, BindingResult result) {
+      if (result.hasErrors()) {
+          return "newBook.jsp";
+      }else{
+          bookService.addBook(book);
+          return "redirect:/books";
+      }
+  }
+
 
 
 }

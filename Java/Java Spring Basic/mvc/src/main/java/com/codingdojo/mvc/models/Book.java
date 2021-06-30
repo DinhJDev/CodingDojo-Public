@@ -18,7 +18,7 @@ public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Size(min = 5, max = 200)
+    @Size(min = 3, max = 20)
     private String title;
     @Size(min = 5, max = 200)
     private String description;
