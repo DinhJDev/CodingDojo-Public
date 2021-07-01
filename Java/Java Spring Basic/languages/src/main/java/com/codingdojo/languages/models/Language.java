@@ -5,6 +5,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="languages")
@@ -12,12 +14,26 @@ public class Language {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
+	@Size(min=2, max=20)
 	private String name;
+	@Size(min=2, max=20)
 	private String creator;
+	@NotBlank
 	private String currentVersion;
 	public Language() {
 		
 	}
+	
+	
+	
+	public Language(String name, String creator, String currentVersion) {
+		this.name = name;
+		this.creator = creator;
+		this.currentVersion = currentVersion;
+	}
+
+
+
 	public Long getId() {
 		return id;
 	}
