@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,14 +19,15 @@ public class HomeController {
 	private LanguageService lService;
 	
 	@GetMapping("/")
-	public  String index() {
+	public  String index(Model viewModel) {
+		viewModel.addAttribute("allLanguages", this.lService.AllLanguages());
 		return "index.jsp";
 	}
 	@PostMapping("/addRecord")
 	public String addLanguage(@RequestParam("name") String name, @RequestParam("creator") String creator, @RequestParam("currentVersion") String currentVersion, RedirectAttributes redirectAttr) {
 		ArrayList<String> errors = new ArrayList<String>();
 		if(name.equals("")) {
-			errors.add("Put a name");
+			errors.add("Please insert a name.");
 		}
 		if(errors.size() > 0) {
 			for(String e : errors) {

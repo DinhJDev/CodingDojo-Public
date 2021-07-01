@@ -13,6 +13,30 @@
 </head>
 <body>
 	<div class="container">
+		<table class="table table-dark">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Name</th>
+					<th>Creator</th>
+					<th>Current Version</th>
+				</tr>
+			</thead>
+			<tbody>
+					<c:forEach items="${allLanguages}" var="language">
+					<tr>
+						<td>${language.id}</td>
+						<td>${language.name}</td>
+						<td>${language.creator}</td>
+						<td>${language.currentVersion}</td>
+					</tr>
+					</c:forEach>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div class="container">
 		<div class="card w-50">
 			<div class="card-header">
 			</div>
