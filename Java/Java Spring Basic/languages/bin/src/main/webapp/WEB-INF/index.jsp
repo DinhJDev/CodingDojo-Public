@@ -16,19 +16,19 @@
 		<table class="table table-dark">
 			<thead>
 				<tr>
+					<th>Id</th>
 					<th>Name</th>
 					<th>Creator</th>
 					<th>Current Version</th>
-					<th>Action</th>
 				</tr>
 			</thead>
 			<tbody>
 					<c:forEach items="${allLanguages}" var="language">
 					<tr>
-						<td><a href="/languages/${language.id}/">${language.name}</a></td>
+						<td>${language.id}</td>
+						<td>${language.name}</td>
 						<td>${language.creator}</td>
 						<td>${language.currentVersion}</td>
-						<td><a href="/delete/${language.id}">Delete</a> <a href="/edit/${language.id}">Edit</a></td>
 					</tr>
 					</c:forEach>
 				</tr>

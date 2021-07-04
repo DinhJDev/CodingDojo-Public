@@ -57,6 +57,5 @@ public class Language {
 	}
 	public void setCurrentVersion(String currentVersion) {
 		this.currentVersion = currentVersion;
-	}
-	
+	}	
 }

@@ -14,6 +14,7 @@ public class LanguageService {
 		this.lRepo = lRepo;
 	}
 	
+	
 	// Display All Albums
 	public List<Language> AllLanguages(){
 		return this.lRepo.findAll();
@@ -30,9 +31,7 @@ public class LanguageService {
 	}
 	
 	// Update
-	public Language updateLanguage(Language language) {
-		return this.lRepo.save(language);
-	}
+	
 	
 	// Delete
 	public String deleteLanguage(Long id) {
