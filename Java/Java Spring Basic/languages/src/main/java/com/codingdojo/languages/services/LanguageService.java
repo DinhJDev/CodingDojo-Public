@@ -1,6 +1,7 @@
 package com.codingdojo.languages.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -31,7 +32,19 @@ public class LanguageService {
 	}
 	
 	// Update
-	
+	public Language updateLanguage(Long id, String name, String creator, String currentVersion) {
+		Optional<Language> optionalL = lRepo.findById(id);
+		if(optionalL.isPresent()) {
+			Language updateL = optionalL.get();
+			updateL.setName(name);
+			updateL.setCreator(creator);
+			updateL.setCurrentVersion(currentVersion);
+			
+			return lRepo.save(updateL);
+		} else {
+			return null;
+		}
+	}
 	
 	// Delete
 	public String deleteLanguage(Long id) {

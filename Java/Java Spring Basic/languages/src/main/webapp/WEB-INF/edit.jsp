@@ -1,4 +1,5 @@
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -13,21 +14,22 @@
 		<div class="card">
 			<a href="/delete/${language.id}">Delete</a>
 			<a href="/">Dashboard</a>
-			<form action="/editRecord" method="PUT">
-				<div class="mb-3">
-					<label for="name" class="form-label">Language Name</label> 
-					<input type="text" name="name" value="${language.name}" class="form-control"> 
-				</div>
-				<div class="mb-3">
-					<label for="creator" class="form-label">Creator</label>
-					<input type="text" name="creator" value="${language.creator}" class="form-control">
-				</div>
-				<div class="mb-3">
-					<label for="currentVersion" class="form-label">Current Version</label>
-					<input type="text" name="currentVersion" value="${language.currentVersion}" class="form-control">
-				</div>
-				<button class="btn btn-primary">Edit Language</button>
-			</form>
+			<form:form action="/edit/{id}" method="POST" modelAttribute="language">
+				<input type="hidden" name="_method" value="put">
+					<div class="mb-3">
+						<form:label path="name">Language Name</form:label> 
+						<form:input path="name"/> 
+					</div>
+					<div class="mb-3">
+						<form:label path="creator">Creator</form:label>
+						<form:input path="creator"/>
+					</div>
+					<div class="mb-3">
+						<form:label path="currentVersion">Current Version</form:label>
+						<form:input path="currentVersion"/>
+					</div>
+					<form:button class="btn btn-primary" type="submit">Submit</form:button>
+			</form:form>
 		</div>
 	</div>
 </body>

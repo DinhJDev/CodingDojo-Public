@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -30,14 +31,31 @@ public class HomeController {
 		return "index.jsp";
 	}
 	@RequestMapping("/delete/{id}")
-	public String delete(@PathVariable("id") long id) {
+	public String delete(@PathVariable("id") Long id) {
 		lService.deleteLanguage(id);
 		return "redirect:/";
 	}
 	
+	@GetMapping("/edit/{id}")
+	public String edit(@PathVariable("id") Long id, Model model) {
+		Language language = lService.getOneLanguage(id);
+		model.addAttribute("language", language);
+		return "edit.jsp";
+	}
+	
+	@RequestMapping(value="/edit/{id}", method=RequestMethod.POST)
+	public String update(@Valid @ModelAttribute("language") Language language, BindingResult result, @PathVariable("id") Long id,
+			@RequestParam(value="name") String name, @RequestParam(value="creator") String creator, @RequestParam(value="currentVersion") String currentVersion) {
+		if (result.hasErrors()) {
+			return "/edit/{id}";
+		} else {
+			lService.updateLanguage(id, name, creator, currentVersion);
+			return "redirect:/";
+		}
+	}
 	
 	@RequestMapping("/languages/{id}")
-	public String language(Model viewModel, @PathVariable("id") long id) {
+	public String language(Model viewModel, @PathVariable("id") Long id) {
 		Language language = lService.getOneLanguage(id);
 		viewModel.addAttribute("language", language);
 		return "language.jsp";

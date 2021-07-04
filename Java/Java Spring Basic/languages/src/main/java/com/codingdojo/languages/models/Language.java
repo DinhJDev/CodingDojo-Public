@@ -24,15 +24,11 @@ public class Language {
 		
 	}
 	
-	
-	
 	public Language(String name, String creator, String currentVersion) {
 		this.name = name;
 		this.creator = creator;
 		this.currentVersion = currentVersion;
 	}
-
-
 
 	public Long getId() {
 		return id;
