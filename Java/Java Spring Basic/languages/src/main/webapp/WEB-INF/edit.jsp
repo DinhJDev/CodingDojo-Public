@@ -14,7 +14,7 @@
 		<div class="card">
 			<a href="/delete/${language.id}">Delete</a>
 			<a href="/">Dashboard</a>
-			<form:form action="/edit/{id}" method="POST" modelAttribute="language">
+			<form:form action="/edit/${language.id}" method="POST" modelAttribute="language">
 				<input type="hidden" name="_method" value="put">
 					<div class="mb-3">
 						<form:label path="name">Language Name</form:label> 
