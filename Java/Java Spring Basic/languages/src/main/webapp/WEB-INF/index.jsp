@@ -31,7 +31,6 @@
 						<td><a href="/delete/${language.id}">Delete</a> <a href="/edit/${language.id}">Edit</a></td>
 					</tr>
 					</c:forEach>
-				</tr>
 			</tbody>
 		</table>
 	</div>
