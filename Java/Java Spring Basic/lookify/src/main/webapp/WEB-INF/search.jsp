@@ -22,7 +22,7 @@
 			    </ul>
 			</div>
 		</nav>
-		<h1>Top Ten Songs:</h1>
+		<h1>Songs by artist: <c:out value="${artist}"/></h1>
 		<table class="table">
 			<thead>
 				<tr>
@@ -32,7 +32,7 @@
 				</tr>
 			</thead>
 			<tbody>
-					<c:forEach items="${topTen}" var="song">
+					<c:forEach items="${searchResults}" var="song">
 					<tr>
 						<td><a href="/songs/${song.id}/">${song.title}</a></td>
 						<td>${song.rating}</td>

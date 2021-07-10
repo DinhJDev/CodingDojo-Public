@@ -30,6 +30,12 @@ public class HomeController {
 		return "dashboard.jsp";
 	}
 	
+	@GetMapping("/search/{artist}")
+	public String searchResults(Model viewModel, @PathVariable("artist") String artist) {
+		viewModel.addAttribute("searchResults", this.lService.SearchArtist(artist));
+		return "search.jsp";
+	}
+	
 	@GetMapping("/songs/new")
 	public String newSong(@ModelAttribute("song") Song song) {
 		return "new.jsp";
@@ -59,7 +65,7 @@ public class HomeController {
 	
 	@GetMapping("/search/topTen")
 	public String topTen(Model viewModel) {
-		
+		viewModel.addAttribute("topTen", this.lService.TopTenSongs());
 		return "topten.jsp";
 	}
 }

@@ -14,9 +14,19 @@ public class LookifyService {
 	@Autowired
 	private LookifyRepository lRepo;
 	
-	// Display All Albums
+	// Display All Song
 	public List<Song> AllSongs() {
 		return this.lRepo.findAll();
+	}
+	
+	// Display Top Ten Song
+	public List<Song> TopTenSongs() {
+		return this.lRepo.findTop10ByOrderByRatingDesc();
+	}
+	
+	// Search Artists
+	public List<Song> SearchArtist(String artist) {
+		return this.lRepo.findByArtistContaining(artist);
 	}
 	
 	// Create

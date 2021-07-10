@@ -13,7 +13,7 @@
 </head>
 <body>
 <div class="container">
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<div class="container-fluid">
 			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 		        <li class="nav-item">
@@ -23,13 +23,13 @@
 		        	<a class="nav-link active" aria-current="page" href="/search/topTen">Top Songs</a>
 		        </li>
 	        </ul>
-	        <form class="d-flex">
-			      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-			      <button class="btn btn-outline-success" type="submit">Search Artists</button>
+	        <form id="form" method="get">
+			   <input type="text" onchange="document.getElementById('form').action = '/search/'+ this.value;">
+			   <input type="submit" value="Go">
 			</form>
 		</div>
 	</nav>
-	<table class="table table-dark">
+	<table class="table">
 		<thead>
 			<tr>
 				<th>Name</th>
