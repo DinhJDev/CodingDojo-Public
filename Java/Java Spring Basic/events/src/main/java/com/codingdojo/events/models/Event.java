@@ -41,13 +41,13 @@ public class Event {
 	@OneToMany(mappedBy="event", fetch=FetchType.LAZY)
 	private List<Comment> comments;
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="user_id")
+	@JoinColumn(name="host_id")
 	private User host;
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(
 		name = "users_events",
 		joinColumns = @JoinColumn(name = "event_id"),
-		inverseJoinColumns = @JoinColumn(name = "user_id")
+		inverseJoinColumns = @JoinColumn(name = "participant_id")
 	)
 	private List<User> attendees;
 	

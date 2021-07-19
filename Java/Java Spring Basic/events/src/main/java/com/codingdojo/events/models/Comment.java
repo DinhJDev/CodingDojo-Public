@@ -27,7 +27,7 @@ public class Comment {
 	private Date createdAt;
 	private Date updatedAt;
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="user_id")
+	@JoinColumn(name="commenter_id")
 	private User commenter;
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="event_id")
