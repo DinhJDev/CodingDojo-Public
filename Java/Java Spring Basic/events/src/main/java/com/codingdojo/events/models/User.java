@@ -42,9 +42,9 @@ public class User {
 	@Column(updatable=false)
 	private Date createdAt;
 	private Date updatedAt;
-	@OneToMany(mappedBy="user", fetch=FetchType.LAZY)
+	@OneToMany(mappedBy="host", fetch=FetchType.LAZY)
 	private List<Event> events;
-	@OneToMany(mappedBy="user", fetch=FetchType.LAZY)
+	@OneToMany(mappedBy="commenter", fetch=FetchType.LAZY)
 	private List<Comment> comments;
 	@ManyToMany(fetch=FetchType.LAZY)
 	@JoinTable(

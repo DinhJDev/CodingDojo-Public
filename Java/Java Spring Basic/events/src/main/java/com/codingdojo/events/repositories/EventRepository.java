@@ -12,4 +12,6 @@ public interface EventRepository extends CrudRepository<Event, Long> {
 	List<Event> findAll();
 	
 	List<Event> findByHostId(Long hostId);
+	
+	List<Event> findByState(String state);
 }
