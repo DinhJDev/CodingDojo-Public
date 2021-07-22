@@ -1,5 +1,6 @@
 package com.codingdojo.events.controllers;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -7,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -60,7 +62,7 @@ public class HomeController {
 	}
 	
 	@GetMapping("/events")
-	public String events(HttpSession session, Model model) {
+	public String events(HttpSession session, Model model, @ModelAttribute("event") Event event) {
 		Long sessionId = (Long) session.getAttribute("userId");
 		User u = userService.findUserById(sessionId);
 		model.addAttribute("user", u);
@@ -70,10 +72,17 @@ public class HomeController {
 	
 	// Work-In-Progress
 	@PostMapping("/createEvent")
-	public String createEvent(@Valid @ModelAttribute("event") Event event, BindingResult result) {
+	public String createEvent(@Valid @ModelAttribute("event") Event event, Model model, BindingResult result, HttpSession session, @RequestParam("date") @DateTimeFormat(pattern = "yyyy-MM-dd") Date date) {
 		if (result.hasErrors()) {
+			Long sessionId = (Long) session.getAttribute("userId");
+			User u = userService.findUserById(sessionId);
+			model.addAttribute("user", u);
+			model.addAttribute("stateEvents", this.eventService.InStateEvents(u.getState()));
 			return "eventsPage.jsp";
 		}
+		Long sessionId = (Long) session.getAttribute("userId");
+		User u = userService.findUserById(sessionId);
+		event.setHost(u);
 		this.eventService.createEvent(event);
 		return "redirect:/events";
 	}

@@ -20,6 +20,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.NotNull;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 @Table(name="events")
 public class Event {
@@ -30,6 +32,7 @@ public class Event {
 	private String name;
 	@NotNull
 	@Future
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date date;
 	@NotNull
 	private String city;

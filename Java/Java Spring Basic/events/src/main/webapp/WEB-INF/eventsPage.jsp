@@ -37,22 +37,26 @@
 							<td><c:out value="${event.name}"/></td>
 							<td><c:out value="${event.date}"/></td>
 							<td><c:out value="${event.city}"/></td>
-							<td><c:out value="${event.host}"/></td>
+							<td><c:out value="${event.host.firstName}"/> <c:out value="${event.host.lastName}"/></td>
 							<td><button class="btn btn-primary">Join</button>
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
+			<p>Here are some of the events in your state:</p>
+			<table class="table">
+			
+			</table>
 			<h2>Create an Event</h2>
 			<form:form method="POST" action="/createEvent" modelAttribute="event">
-				<form:errors path="user.*"/>
+				<form:errors path="event.*"/>
 					<div class="mb-3">
 						<form:label class="form-label" path="name">Name:</form:label>
 						<form:input class="form-control" path="name"/>
 					</div>
 					<div class="mb-3">
 						<form:label class="form-label" path="date">Date:</form:label>
-						<form:input class="form-control" path="date"/>
+						<form:input class="form-control" type="date" path="date"/>
 					</div>
 					<div class="mb-3">
 						<form:label class="form-label" path="city">Location:</form:label>
@@ -65,6 +69,7 @@
 							</div>
 						</div>
 					</div>
+					<button class="btn btn-secondary">Create</button>
 			</form:form>
 		</div>
 	</div>
