@@ -38,7 +38,17 @@
 							<td><c:out value="${event.date}"/></td>
 							<td><c:out value="${event.city}"/></td>
 							<td><c:out value="${event.host.firstName}"/> <c:out value="${event.host.lastName}"/></td>
-							<td><button class="btn btn-primary">Join</button>
+							<td>
+								<c:choose>
+									<c:when test="${user.id==event.host.id}">
+										<button class="btn btn-primary">Edit</button>
+										<a href="/delete/${event.id}"><button class="btn btn-danger">Delete</button></a>
+									</c:when>
+									<c:otherwise>
+										<button class="btn btn-primary">Join</button>
+									</c:otherwise>
+								</c:choose>
+							</td>
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -63,7 +73,17 @@
 							<td><c:out value="${event.city}"/></td>
 							<td><c:out value="${event.state}"/></td>
 							<td><c:out value="${event.host.firstName}"/> <c:out value="${event.host.lastName}"/></td>
-							<td><button class="btn btn-primary">Join</button>
+							<td>
+								<c:choose>
+									<c:when test="${user.id==event.host.id}">
+										<button class="btn btn-primary">Edit</button>
+										<button class="btn btn-danger">Delete</button>
+									</c:when>
+									<c:otherwise>
+										<button class="btn btn-primary">Join</button>
+									</c:otherwise>
+								</c:choose>
+							</td>
 						</tr>
 					</c:forEach>
 				</tbody>

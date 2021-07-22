@@ -28,4 +28,8 @@ public class EventService {
 		return this.eRepo.save(event);
 	}
 	
+	// Delete
+	public void deleteEvent(Long id) {
+		this.eRepo.deleteById(id);
+	}
 }

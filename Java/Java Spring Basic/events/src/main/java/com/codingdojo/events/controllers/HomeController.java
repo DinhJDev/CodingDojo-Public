@@ -13,8 +13,10 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -67,7 +69,11 @@ public class HomeController {
 		Long sessionId = (Long) session.getAttribute("userId");
 		User u = userService.findUserById(sessionId);
 		model.addAttribute("user", u);
+		
+		// In-State Table
 		model.addAttribute("stateEvents", this.eventService.InStateEvents(u.getState()));
+		
+		// Out-of-State Table
 		List<Event> nStateEvents = this.eventService.AllEvents();
 		nStateEvents.removeAll(this.eventService.InStateEvents(u.getState()));
 		model.addAttribute("nonStateEvents", nStateEvents);
@@ -91,6 +97,12 @@ public class HomeController {
 		User u = userService.findUserById(sessionId);
 		event.setHost(u);
 		this.eventService.createEvent(event);
+		return "redirect:/events";
+	}
+	
+	@GetMapping("/delete/{id}")
+	public String deleteEvent(@PathVariable("id") Long id) {
+		this.eventService.deleteEvent(id);
 		return "redirect:/events";
 	}
 	
