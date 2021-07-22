@@ -17,7 +17,7 @@
 					<h1>Welcome, <c:out value="${user.firstName}"/></h1>
 				</div>
 				<div class="col-md-1">
-					<button href="/logout" class="btn btn-danger">Logout</button>
+					<a href="/logout"><button class="btn btn-danger">Logout</button></a>
 				</div>
 			</div>
 			<p>Here are some of the events in your state:</p>
