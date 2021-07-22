@@ -51,6 +51,18 @@ public class Comment {
 
 
 
+	public User getCommenter() {
+		return commenter;
+	}
+
+
+
+	public void setCommenter(User commenter) {
+		this.commenter = commenter;
+	}
+
+
+
 	public String getContent() {
 		return content;
 	}

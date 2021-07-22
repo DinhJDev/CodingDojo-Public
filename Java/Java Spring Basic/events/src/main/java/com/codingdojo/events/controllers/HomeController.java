@@ -19,8 +19,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.codingdojo.events.models.Comment;
 import com.codingdojo.events.models.Event;
 import com.codingdojo.events.models.User;
+import com.codingdojo.events.services.CommentService;
 import com.codingdojo.events.services.EventService;
 import com.codingdojo.events.services.UserService;
 
@@ -30,10 +32,8 @@ public class HomeController {
 	UserService userService;
 	@Autowired
 	EventService eventService;
-	/*
 	@Autowired
 	CommentService commentService;
-	*/
 	
 	@GetMapping("/")
 	public String index(@ModelAttribute("user") User user) {
@@ -116,7 +116,7 @@ public class HomeController {
 	@PostMapping("/edit/{id}")
 	public String updateEvent(@Valid @ModelAttribute("event") Event event, BindingResult result, @PathVariable("id") Long id, HttpSession session) {
 		if (result.hasErrors()) {
-			return "/events/{id}/edit";
+			return "redirect:/events/{id}/edit";
 		} else {
 			Long sessionId = (Long) session.getAttribute("userId");
 			User u = userService.findUserById(sessionId);
@@ -124,6 +124,53 @@ public class HomeController {
 			eventService.updateEvent(id, event);
 			return "redirect:/events";
 		}
+	}
+	
+	@GetMapping("/event/{id}")
+	public String eventProfile(@PathVariable("id") Long id, Model model, HttpSession session, @ModelAttribute("comment") Comment comment) {
+		Long sessionId = (Long) session.getAttribute("userId");
+		User u = userService.findUserById(sessionId);
+		model.addAttribute("user", u);
+		Event event = eventService.getOneEvent(id);
+		model.addAttribute("event", event);
+		model.addAttribute("participants", this.userService.EventAttendees(event));
+		model.addAttribute("comments", this.commentService.EventComments(id));
+		
+		return "eventProfilePage.jsp";
+	}
+	
+	@PostMapping("/sendComment/{id}")
+	public String sendComment(@PathVariable("id") Long id, @Valid @ModelAttribute("comment") Comment comment, BindingResult result, HttpSession session) {
+		if (result.hasErrors()) {
+			return "redirect:/event/{id}";
+		} else {
+			Long sessionId = (Long) session.getAttribute("userId");
+			User u = userService.findUserById(sessionId);
+			comment.setEvent(this.eventService.getOneEvent(id));
+			comment.setCommenter(u);
+			commentService.createComment(comment);
+			return "redirect:/event/" + id;
+		}
+	}
+	
+	@GetMapping("/join/{id}")
+	public String joinEvent(@PathVariable("id") Long id, HttpSession session) {
+		Long sessionId = (Long) session.getAttribute("userId");
+		User u = userService.findUserById(sessionId);
+		Event event = eventService.getOneEvent(id);
+		this.eventService.AddAttendee(u, event);
+		
+		return "redirect:/events";
+	}
+	
+	@GetMapping("/cancel/{id}")
+	public String unjoinEvent(@PathVariable("id") Long id, HttpSession session) {
+		Long sessionId = (Long) session.getAttribute("userId");
+		User u = userService.findUserById(sessionId);
+		Event event = eventService.getOneEvent(id);
+		this.eventService.RemoveAttendee(u, event);
+		
+		return "redirect:/events";
 	}
 	
 	@GetMapping("/delete/{id}")
@@ -137,6 +184,7 @@ public class HomeController {
 		session.invalidate();
 		return "redirect:/";
 	}
+	
 	
 	@ModelAttribute("stateList")
 	public Map<String, String> getStateList() {

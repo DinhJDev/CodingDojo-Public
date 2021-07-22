@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.codingdojo.events.models.Event;
+import com.codingdojo.events.models.User;
 import com.codingdojo.events.repositories.EventRepository;
 
 @Service
@@ -47,5 +48,20 @@ public class EventService {
 	// Delete
 	public void deleteEvent(Long id) {
 		this.eRepo.deleteById(id);
+	}
+	
+	
+	// Add Attendee
+	public void AddAttendee(User user, Event event) {
+		List<User> currentAttendees = event.getAttendees();
+		currentAttendees.add(user);
+		this.eRepo.save(event);
+	}
+	
+	// Remove Attendee
+	public void RemoveAttendee(User user, Event event) {
+		List<User> currentAttendees = event.getAttendees();
+		currentAttendees.remove(user);
+		this.eRepo.save(event);
 	}
 }

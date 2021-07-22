@@ -34,18 +34,22 @@
 				<tbody>
 					<c:forEach items="${stateEvents}" var="event">
 						<tr>
-							<td><c:out value="${event.name}"/></td>
+							<td><a href="/event/${event.id}"><c:out value="${event.name}"/></a></td>
 							<td><c:out value="${event.date}"/></td>
 							<td><c:out value="${event.city}"/></td>
 							<td><c:out value="${event.host.firstName}"/> <c:out value="${event.host.lastName}"/></td>
 							<td>
 								<c:choose>
+									<c:when test="${event.attendees.contains(user)}">
+										<p><strong>Joining</strong><p>
+										<button class="btn btn-secondary">Cancel</button>
+									</c:when>
 									<c:when test="${user.id==event.host.id}">
 										<a href="/events/${event.id}/edit"><button class="btn btn-primary">Edit</button></a>
 										<a href="/delete/${event.id}"><button class="btn btn-danger">Delete</button></a>
 									</c:when>
 									<c:otherwise>
-										<button class="btn btn-primary">Join</button>
+										<a href="/join/${event.id}"><button class="btn btn-primary">Join</button></a>
 									</c:otherwise>
 								</c:choose>
 							</td>
@@ -68,19 +72,29 @@
 				<tbody>
 					<c:forEach items="${nonStateEvents}" var="event">
 						<tr>
-							<td><c:out value="${event.name}"/></td>
+							<td><a href="/event/${event.id}"><c:out value="${event.name}"/></a></td>
 							<td><c:out value="${event.date}"/></td>
 							<td><c:out value="${event.city}"/></td>
 							<td><c:out value="${event.state}"/></td>
 							<td><c:out value="${event.host.firstName}"/> <c:out value="${event.host.lastName}"/></td>
 							<td>
 								<c:choose>
+									<c:when test="${event.attendees.contains(user)}">
+										<div class="row">
+											<div class="col-3">
+												<p><strong>Joining</strong><p>
+											</div>
+											<div class="col-3">
+												<a href="/cancel/${event.id}"><button class="btn btn-secondary">Cancel</button></a>
+											</div>
+										</div>
+									</c:when>
 									<c:when test="${user.id==event.host.id}">
-										<button class="btn btn-primary">Edit</button>
-										<button class="btn btn-danger">Delete</button>
+										<a href="/events/${event.id}/edit"><button class="btn btn-primary">Edit</button></a>
+										<a href="/delete/${event.id}"><button class="btn btn-danger">Delete</button></a>
 									</c:when>
 									<c:otherwise>
-										<button class="btn btn-primary">Join</button>
+										<a href="/join/${event.id}"><button class="btn btn-primary">Join</button></a>
 									</c:otherwise>
 								</c:choose>
 							</td>

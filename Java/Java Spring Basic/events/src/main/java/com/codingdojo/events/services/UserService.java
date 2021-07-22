@@ -1,11 +1,13 @@
 package com.codingdojo.events.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.codingdojo.events.models.Event;
 import com.codingdojo.events.models.User;
 import com.codingdojo.events.repositories.UserRepository;
 
@@ -53,4 +55,9 @@ public class UserService {
             }
         }
     }
+    
+    // Find by event
+ 	public List<User> EventAttendees(Event event) {
+ 		return this.userRepository.findByEventsAttending(event);
+ 	}
 }
