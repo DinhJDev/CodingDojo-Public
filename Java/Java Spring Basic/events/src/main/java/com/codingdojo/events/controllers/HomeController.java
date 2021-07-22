@@ -79,7 +79,6 @@ public class HomeController {
 		return "eventsPage.jsp";
 	}
 	
-	// Work-In-Progress
 	@PostMapping("/createEvent")
 	public String createEvent(@Valid @ModelAttribute("event") Event event, Model model, BindingResult result, HttpSession session, @RequestParam("date") @DateTimeFormat(pattern = "yyyy-MM-dd") Date date) {
 		if (result.hasErrors()) {
@@ -97,6 +96,34 @@ public class HomeController {
 		event.setHost(u);
 		this.eventService.createEvent(event);
 		return "redirect:/events";
+	}
+	
+	@GetMapping("/events/{id}/edit")
+	public String editEvent(@PathVariable("id") Long id, Model model, HttpSession session) {
+		Long sessionId = (Long) session.getAttribute("userId");
+		User u = userService.findUserById(sessionId);
+		model.addAttribute("user", u);
+		Event event = eventService.getOneEvent(id);
+		
+		if (sessionId == event.getHost().getId()) {
+			model.addAttribute("event", event);
+			return "editPage.jsp";
+		} else { 
+			return "redirect:/events";
+		}
+	}
+	
+	@PostMapping("/edit/{id}")
+	public String updateEvent(@Valid @ModelAttribute("event") Event event, BindingResult result, @PathVariable("id") Long id, HttpSession session) {
+		if (result.hasErrors()) {
+			return "/events/{id}/edit";
+		} else {
+			Long sessionId = (Long) session.getAttribute("userId");
+			User u = userService.findUserById(sessionId);
+			event.setHost(u);
+			eventService.updateEvent(id, event);
+			return "redirect:/events";
+		}
 	}
 	
 	@GetMapping("/delete/{id}")

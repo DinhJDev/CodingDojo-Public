@@ -1,6 +1,7 @@
 package com.codingdojo.events.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,6 +27,21 @@ public class EventService {
 	// Create
 	public Event createEvent(Event event) {
 		return this.eRepo.save(event);
+	}
+	
+	// Read
+	public Event getOneEvent(Long id) {
+		return this.eRepo.findById(id).orElse(null);
+	}
+	
+	// Update
+	public Event updateEvent(Long id, Event event) {
+		Optional<Event> optionalE = eRepo.findById(id);
+		if(optionalE.isPresent()) {
+			return eRepo.save(event);
+		} else {
+			return null;
+		}
 	}
 	
 	// Delete

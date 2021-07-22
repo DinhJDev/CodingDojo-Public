@@ -41,7 +41,7 @@
 							<td>
 								<c:choose>
 									<c:when test="${user.id==event.host.id}">
-										<button class="btn btn-primary">Edit</button>
+										<a href="/events/${event.id}/edit"><button class="btn btn-primary">Edit</button></a>
 										<a href="/delete/${event.id}"><button class="btn btn-danger">Delete</button></a>
 									</c:when>
 									<c:otherwise>
