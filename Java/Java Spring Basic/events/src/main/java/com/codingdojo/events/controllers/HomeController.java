@@ -2,6 +2,7 @@ package com.codingdojo.events.controllers;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -67,6 +68,9 @@ public class HomeController {
 		User u = userService.findUserById(sessionId);
 		model.addAttribute("user", u);
 		model.addAttribute("stateEvents", this.eventService.InStateEvents(u.getState()));
+		List<Event> nStateEvents = this.eventService.AllEvents();
+		nStateEvents.removeAll(this.eventService.InStateEvents(u.getState()));
+		model.addAttribute("nonStateEvents", nStateEvents);
 		return "eventsPage.jsp";
 	}
 	
@@ -78,6 +82,9 @@ public class HomeController {
 			User u = userService.findUserById(sessionId);
 			model.addAttribute("user", u);
 			model.addAttribute("stateEvents", this.eventService.InStateEvents(u.getState()));
+			List<Event> nStateEvents = this.eventService.AllEvents();
+			nStateEvents.removeAll(this.eventService.InStateEvents(u.getState()));
+			model.addAttribute("nonStateEvents", nStateEvents);
 			return "eventsPage.jsp";
 		}
 		Long sessionId = (Long) session.getAttribute("userId");

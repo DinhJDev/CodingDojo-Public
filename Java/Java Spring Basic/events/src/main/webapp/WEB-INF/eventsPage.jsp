@@ -43,9 +43,30 @@
 					</c:forEach>
 				</tbody>
 			</table>
-			<p>Here are some of the events in your state:</p>
+			<p>Here are some of the events in other states:</p>
 			<table class="table">
-			
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Date</th>
+						<th scope="col">Location</th>
+						<th scope="col">State</th>
+						<th scope="col">Host</th>
+						<th scope="col">Action/Status</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach items="${nonStateEvents}" var="event">
+						<tr>
+							<td><c:out value="${event.name}"/></td>
+							<td><c:out value="${event.date}"/></td>
+							<td><c:out value="${event.city}"/></td>
+							<td><c:out value="${event.state}"/></td>
+							<td><c:out value="${event.host.firstName}"/> <c:out value="${event.host.lastName}"/></td>
+							<td><button class="btn btn-primary">Join</button>
+						</tr>
+					</c:forEach>
+				</tbody>
 			</table>
 			<h2>Create an Event</h2>
 			<form:form method="POST" action="/createEvent" modelAttribute="event">
