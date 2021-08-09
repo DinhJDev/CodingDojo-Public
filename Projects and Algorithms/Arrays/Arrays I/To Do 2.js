@@ -23,11 +23,60 @@ Third: minimize memory usage. With no new array, handle arrays/shiftBys in the m
 Fourth: minimize the touches of each element.*/
 
 function rotateArr(arr, shiftBy) {
-    for (var i = 0; i < shiftBy; i++) {
-        temp = arr[shiftBy+i];
-        arr[shiftBy+i] = arr[i];
-        arr[i] = temp;
+    if (shiftBy >= 0) {
+        for (var i = 0; i < shiftBy; i++) {
+            temp = arr[arr.length-1]
+            for (var j = arr.length-1; j > 0; j--) {
+                arr[j] = arr[j-1];
+            }
+            arr[0] = temp;
+        }
+        console.log(arr);
+    } else {
+        for (var i = 0; i > shiftBy; i--) {
+            temp = arr[0]
+            for (var k = 1; k < arr.length; k++) {
+                arr[k-1] = arr[k];
+            }
+            arr[arr.length-1] = temp;
+        }
+        console.log(arr);
+    }
+}
+
+/*Alan is good at breaking secret codes. One method is to eliminate values that lie outside 
+of a specific known range. Given arr and values min and max, retain only the array values between 
+min and max. Work in-place: return the array you are given, with values in original order. No built-in array functions.*/
+
+function filterRange(arr, min ,max) {
+    for (var i = 0; i < arr.length; i++) {
+        if (arr[i] < min || arr[i] > max) {
+            for (var j = i+1; j < arr.length; j++) {
+                arr[j-1] = arr[j];
+            }
+            arr.length--;
+            i--;
+        }
     }
     console.log(arr);
 }
-rotateArr(myArr, 1);
+
+/*Replicate JavaScript's concat(). Create a standalone function that accepts two arrays. 
+Return a new array containing the first array's elements, followed by the second array's 
+elements. Do not alter the original arrays. Ex.: arrConcat( ['a','b'], [1,2] ) should 
+return new array ['a','b',1,2].*/
+
+function concat(arr1, arr2) {
+    var resultArr = [0];
+    if (arr1.length > 0) {
+        for (i=0; i < arr1.length; i++) {
+            resultArr[i] = arr1[i];
+        }
+    }
+    if (arr2.length > 0) {
+        for (j=0; j < arr2.length; j++) {
+            resultArr[arr1.length + j] = arr2[j];
+        }
+    }
+    console.log(resultArr);
+}
