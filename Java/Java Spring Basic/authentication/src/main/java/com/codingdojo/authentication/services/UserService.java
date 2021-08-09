@@ -18,7 +18,7 @@ public class UserService {
         user.setPassword(hashed);
         return userRepository.save(user);
     }
-
+    
     // find user by email
     public User findByEmail(String email) {
         return userRepository.findByEmail(email);
