@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    </head>
+    <body>
+        <div id="app"></div>
+    </body>
+    <script>
+        const event = new Date;
+        const myTime = React.createElement('p', null, "The time is " + event.toLocaleTimeString('en-US'));
+        
+        ReactDOM.render(myTime, document.getElementById('app'));
+        
+    </script>
+</html>
